@@ -16,7 +16,7 @@ pipeline{
 
         stage("Git Checkout"){
             steps{
-                echo "========executing A========"
+                git branch: 'main', credentialsId: 'github-cred', url: 'https://github.com/Ankit1680/complete-prodcution-e2e-pipeline'
             }
            
         }
