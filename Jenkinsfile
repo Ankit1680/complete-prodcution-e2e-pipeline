@@ -20,19 +20,27 @@ pipeline{
             }
            
         }
-         stage("Build"){
+        stage("Build"){
             steps{
                 sh "mvn clean package"
             }
            
         }
-         stage("test"){
+        stage("Test"){
             steps{
                 sh "mvn test"
             }
            
         }
-
+        stage("Sonarqube Analysis"){
+            steps{
+                withSonarQubeEnv(credentialsId: 'sonarqube-token') {
+                    sh "mvn sonar:sonar"
+        }
+            }
+           
+        }
+        
 
     }
    
